@@ -1,0 +1,44 @@
+# This config will create a service called api from the Dockerfile.
+
+# The volume is used to mount the code into the container. 
+# This is a must for a development environment in order to update the container 
+# whenever a change to the source code is made. Without this, you would have to re-build the image each time 
+# you make a change to the code.
+
+# Once spun up, Postgres will 
+# be available on port 5432 for services
+# running in other containers
+version: '3.8'
+
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ['/usr/src/app/entrypoint.sh']
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - 5004:5000
+    environment:
+      - FLASK_ENV=development
+      - APP_SETTINGS=src.config.DevelopmentConfig
+      - DATABASE_URL=postgresql://postgres:postgres@api-db:5432/postgres_db  
+      # - DATABASE_TEST_URL=postgresql://postgres:postgres@api-db:5432/api_test  
+    depends_on: 
+      - api-db
+
+  api-db:  
+    build:
+      context: ./src/db
+      dockerfile: Dockerfile
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+ # -----------------------------------------Migration-----------------------------------------#
+ 

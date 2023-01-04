@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../static/css/home.css">
+</head>
+
+{% if title %}
+<title>Flask Blog - {{ title }}</title>
+{% else %}
+<title>Flask Blog</title>
+{% endif %}
+
+<body>
+    <header>
+        <ul>
+          <li><a class="home" href="{{ url_for('index.home') }}">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <ul>
+          {% if session.logged_in %}
+          <li><a  href="../logout">{{session['username'] }}</a></li>
+          <li><a class="logout" href="{{ url_for('login.user_login') }}">Logout</a></li>
+          {% else %}
+          <li><a class="login" href="{{ url_for('login.user_login') }}">Login</a></li>
+          <li><a class="login" href="{{ url_for('register.user_register') }}">Register</a></li>
+          {% endif %}
+        </ul>
+    </header>
+    <main role="main" class="container">
+      <div class="headings ">
+          <h1>The Genius Audiobooker</h1>
+          <h2>Welcome to Audiobooker, a place where you can discover your unique narrative.</h2>
+      </div>
+      <div class="content">
+        <div class="row">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+</body>
+
+</html>
+
+</html>

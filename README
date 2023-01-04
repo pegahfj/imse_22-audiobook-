@@ -1,0 +1,29 @@
+# 1. set up environment 
+
+# 2. import flask and create a flaks app
+
+# 3. a simple dummy home page : app.rout("/")
+
+# 4. Next, let's configure the Flask CLI tool to run and manage the app from the command line.
+
+# 5. Flask environment variables : 
+#       export FLASK_APP= 
+#       export FLASK_DEBUG=1 -> changes happen automatically
+
+
+# 6. add a new file called config.py to the "src" directory, 
+    # where we'll define environment-specific configuration variables:
+    # class BaseConfig: TESTING = False,
+    # class DevelopmentConfig(BaseConfig): pass , class TestingConfig(BaseConfig): TESTING = True 
+    # this should be set in app.py : app.config.from_object('src.config.DevelopmentConfig')
+    # then :
+    
+    # export FLASK_ENV=development --> enable debug mode 
+
+# 7. FLASK HTML TEMPLATES
+
+
+# ---------------------------------
+# export FLASK_APP=src/app.py
+# export FLASK_ENV=development
+# python3 cli_manager.py run

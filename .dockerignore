@@ -1,0 +1,5 @@
+# what should docker image ignore while building the container
+# lets you exclude specific files and folders from being copied over to the image.
+env
+Dockerfile
+Dockerfile.prod
