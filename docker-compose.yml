@@ -16,17 +16,18 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: ['/usr/src/app/entrypoint.sh']
+    entrypoint: ['/app/entrypoint.sh']
     volumes:
-      - '.:/usr/src/app'
+      - '.:/app'
     ports:
       - 5004:5000
     environment:
       - FLASK_ENV=development
-      - APP_SETTINGS=src.config.DevelopmentConfig
-      - DATABASE_URL=postgresql://postgres:postgres@api-db:5432/postgres_db  
-      # - DATABASE_TEST_URL=postgresql://postgres:postgres@api-db:5432/api_test  
-    depends_on: 
+      - APP_SETTINGS=src.config.BaseConfig
+      # - DATABASE_URL=postgresql://postgres:postgres@api-db:5432/postgres_db  
+      - DATABASE_TEST_URL=postgresql://postgres:postgres@api-db:5432/api_test  
+    depends_on:
+    # Host 
       - api-db
 
   api-db:  
@@ -40,5 +41,14 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - 5432:5432
+
+  # frontend:
+  #   build: ./view
+  #   container_name: frontend
+  #   restart: always
+  #   expose:
+  #     - 8080
+  #   networks: 
+  #     - external_nw    
  # -----------------------------------------Migration-----------------------------------------#
  

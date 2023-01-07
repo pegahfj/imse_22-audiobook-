@@ -1,19 +1,21 @@
-from flask import Blueprint, url_for, render_template, flash, redirect, request, session, make_response
 from .forms import User_register, User_login, New_book_author, New_book, SearchForm
-from .app import db,bcrypt 
+# from .app import db,bcrypt 
+from src import db, bcrypt 
+
+from flask import Blueprint, url_for, render_template, flash, redirect, request, session, make_response
 from functools import wraps
 
-index = Blueprint('index', __name__)
-register = Blueprint('register', __name__)
-login = Blueprint('login', __name__)
-logout = Blueprint('logout', __name__)
-new_book_author = Blueprint('new_book_author', __name__)
-new_book = Blueprint('new_book', __name__)
-search = Blueprint('search', __name__)
+index_blueprint = Blueprint('index', __name__)
+register_blueprint = Blueprint('register', __name__)
+login_blueprint = Blueprint('login', __name__)
+logout_blueprint = Blueprint('logout', __name__)
+new_book_author_blueprint = Blueprint('new_book_author', __name__)
+new_book_blueprint = Blueprint('new_book', __name__)
+search_blueprint = Blueprint('search', __name__)
 
 
 
-@index.route('/', methods=['GET', 'POST'])
+@index_blueprint.route('/', methods=['GET', 'POST'])
 def home():
     form = SearchForm()
     search = form.search.data
@@ -26,7 +28,7 @@ def home():
     return render_template('home.html', posts=books, form=form)
 
 
-@register.route('/register', methods=['GET', 'POST'])
+@register_blueprint.route('/register', methods=['GET', 'POST'])
 def user_register():
     form = User_register()
     if form.validate_on_submit():
@@ -37,7 +39,7 @@ def user_register():
     return render_template('register.html', title='Register', form=form)
 
 
-@login.route('/login', methods=['GET', 'POST'])
+@login_blueprint.route('/login', methods=['GET', 'POST'])
 def user_login():
     form = User_login()
     if request.method == 'POST':
@@ -67,7 +69,7 @@ def is_logged_in(f):
     return wrap
 
 # Logout
-@logout.route('/logout')
+@logout_blueprint.route('/logout')
 @is_logged_in
 def user_logout():
     session.clear()
@@ -79,7 +81,7 @@ def user_logout():
 # 2 check passworde
 
 
-@new_book_author.route('/new_book_author', methods=['GET', 'POST'])
+@new_book_author_blueprint.route('/new_book_author', methods=['GET', 'POST'])
 def add_book_author():
     form = New_book_author()
     if form.validate_on_submit():
@@ -99,7 +101,7 @@ def add_book_author():
     return render_template('new_book_author.html', title='new_book_author', form=form)
 
 
-@new_book.route('/new_book', methods=['GET', 'POST'])
+@new_book_blueprint.route('/new_book', methods=['GET', 'POST'])
 def add_book():
     form = New_book()
     form.auth_name.choices = [(row[0], row[1]) for row in db.get_authors()]
@@ -114,7 +116,7 @@ def add_book():
             return redirect(url_for('index.home'))
     return render_template('new_book.html', title='new_book', form=form)
 
-@search.route('/search', methods=['GET', 'POST'])
+@search_blueprint.route('/search', methods=['GET', 'POST'])
 def search_res():
     form = SearchForm()
     search = form.search.data
