@@ -16,7 +16,7 @@ class Author():
   
     insert_csv = """
     COPY Authors(auth_name,countryOforigins)
-    FROM '/Users/pegah/Desktop/IMSE/submissions-22/M2/audiobooker2.0/Docs/authors.csv'
+    FROM '/var/lib/postgresql/data/authors.csv'
     DELIMITER ';'
     CSV HEADER;"""
 
@@ -24,7 +24,6 @@ class Author():
     INSERT INTO AUTHORS (auth_name,countryOforigins)
     VALUES (%s, %s) RETURNING id;
     """
-
 
 class Category():
     create = """
@@ -73,7 +72,7 @@ class Audbook():
 
     insert_csv = """
     COPY AUDBOOKS(author_id, title, year, lang,images)
-    FROM '/Users/pegah/Desktop/IMSE/submissions-22/M2/audiobooker2.0/Docs/books.csv'
+    FROM '/var/lib/postgresql/data/authors.csv'
     DELIMITER ';'
     CSV HEADER;"""
 

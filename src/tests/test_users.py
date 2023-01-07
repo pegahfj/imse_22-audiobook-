@@ -2,7 +2,7 @@
 
 
 import json
-from src.api.rdbms import User
+from src.api.rdbms.users import User
 
 def test_add_user(test_app, test_database):
     client = test_app.test_client()
