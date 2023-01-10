@@ -17,7 +17,7 @@ def add_book_author():
         auth = db.get_author_byName(form.auth_name.data)
         if auth:
             flash('Similar Author seem to exist already', 'danger')
-            return redirect(url_for('new_book.add_book'))
+            return redirect(url_for('book.add_book'))
         else:
             book = db.search_by_book(form.title.data)
             if book:

@@ -160,13 +160,13 @@ class MyDB:
   
   def insert_book_fromCsv(self):
 # author_id, title, year, lang,images
-    df = pd.read_csv(r'Docs/books.csv', sep=";")
+    df = pd.read_csv(r'src/db/data/books.csv', sep=";")
     for index, row in df.iterrows():
       auth_name = row['auth_name'] 
       title = row['Title'] 
       year = row['Year'] 
       lang = row['Language'] 
-      images = "images/"+row['images'] 
+      images = "images/"+row['images']
       author = self.get_author_byName(auth_name)
       author_id = author[0]
       val = (author_id, title, year, lang, images)
