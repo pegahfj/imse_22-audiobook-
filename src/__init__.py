@@ -3,6 +3,9 @@ import os
 from flask import Flask
 from flask_bcrypt import Bcrypt
 import psycopg2
+from flask_login import LoginManager
+
+
 from .api.rdbms.db_manager import MyDB
 
 
@@ -13,10 +16,11 @@ db = MyDB(connection)
 
 # instantiate the app
 bcrypt = Bcrypt()
-
+# login_manager = LoginManager()
+# login_manager.login_view = 'users.login'
+# login_manager.login_message_category = 'info'
 
 def create_app(script_info=None):
-
 
     app = Flask(__name__, template_folder='templates')
     
@@ -26,24 +30,19 @@ def create_app(script_info=None):
 
     bcrypt.init_app(app)
 
+
     # register blueprints
-    from .routes import index_blueprint
-    app.register_blueprint(index_blueprint)
+    from .api.rdbms.main.routes import index
+    app.register_blueprint(index)
 
-    from .routes import register_blueprint
-    app.register_blueprint(register_blueprint)
+    from .api.rdbms.users.routes import users
+    app.register_blueprint(users)
+    
+    from .api.rdbms.books.routes import book
+    app.register_blueprint(book)
 
-    from .routes import login_blueprint
-    app.register_blueprint(login_blueprint)
-
-    from .routes import new_book_author_blueprint
-    app.register_blueprint(new_book_author_blueprint)
-
-    from .routes import new_book_blueprint
-    app.register_blueprint(new_book_blueprint)
-
-    from .routes import search_blueprint
-    app.register_blueprint(search_blueprint)
+    # with app.app_context():
+    #     login_manager.init_app(app)
 
     # shell context for flask cli
     @app.shell_context_processor

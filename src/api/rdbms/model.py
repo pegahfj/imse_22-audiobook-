@@ -16,7 +16,7 @@ class Author():
   
     insert_csv = """
     COPY Authors(auth_name,countryOforigins)
-    FROM '/var/lib/postgresql/data/authors.csv'
+    FROM '/var/lib/postgresql/data/pgdata/authors.csv'
     DELIMITER ';'
     CSV HEADER;"""
 
@@ -72,7 +72,7 @@ class Audbook():
 
     insert_csv = """
     COPY AUDBOOKS(author_id, title, year, lang,images)
-    FROM '/var/lib/postgresql/data/authors.csv'
+    FROM '/var/lib/postgresql/data/pgdata/books.csv'
     DELIMITER ';'
     CSV HEADER;"""
 

@@ -25,10 +25,10 @@
         <ul>
           {% if session.logged_in %}
           <li><a  href="../logout">{{session['username'] }}</a></li>
-          <li><a class="logout" href="{{ url_for('login.user_login') }}">Logout</a></li>
+          <li><a class="logout" href="{{ url_for('users.login') }}">Logout</a></li>
           {% else %}
-          <li><a class="login" href="{{ url_for('login.user_login') }}">Login</a></li>
-          <li><a class="login" href="{{ url_for('register.user_register') }}">Register</a></li>
+          <li><a class="login" href="{{ url_for('users.login') }}">Login</a></li>
+          <li><a class="login" href="{{ url_for('users.register') }}">Register</a></li>
           {% endif %}
         </ul>
     </header>

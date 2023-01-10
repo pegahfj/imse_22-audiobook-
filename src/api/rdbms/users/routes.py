@@ -1,25 +1,24 @@
-from .forms import User_register, User_login, New_book_author, New_book, SearchForm
+from .forms import User_register, User_login
 # from .app import db,bcrypt 
 from src import db, bcrypt 
 
 from flask import Blueprint, url_for, render_template, flash, redirect, request, session, make_response
-from functools import wraps
+# from functools import wraps
+from flask_login import login_user, current_user, logout_user, login_required
 
 users = Blueprint('users', __name__)
-
-register_blueprint = Blueprint('register', __name__)
-login_blueprint = Blueprint('login', __name__)
-logout_blueprint = Blueprint('logout', __name__)
 
 
 @users.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index.home'))
     form = User_register()
     if form.validate_on_submit():
         exist_email = db.validate_email(form.email.data)
         if not exist_email:
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-            db.insert_user(form.username.data, form.email.data, hashed_password)
+            db.insert_single_user(form.username.data, form.email.data, hashed_password)
             flash(f'Account Created Successfully!', 'success')
         else:    
             flash(f'Email already exists!', 'danger')
@@ -34,7 +33,7 @@ def login():
         if form.validate_on_submit():
             exist_email = db.validate_email(form.email.data)
             if exist_email:
-                user:list = db.get_user(form.email.data)
+                user:list = db.get_user_byEmail(form.email.data)
                 if bcrypt.check_password_hash(user[3], form.password.data):
                     # session['logged_in'] = True
                     # session['username'] = user[1]

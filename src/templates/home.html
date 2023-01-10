@@ -20,11 +20,11 @@
       <div class="headings "> <h3>Our Sidebar</h3></div>  
       <p class='text-muted'>You can put any information here you'd like.
         <ul class="list-group">
-          <li class="list-group-item list-group-item-light"><a href="{{ url_for('new_book.add_book') }}">Add A New Audiobook</a></li>
-          <li class="list-group-item list-group-item-light"><a href="{{ url_for('new_book_author.add_book_author') }}">Add A New Author/Audiobook</a></li>
+          <li class="list-group-item list-group-item-light"><a href="{{ url_for('book.add_book') }}">Add A New Audiobook</a></li>
+          <li class="list-group-item list-group-item-light"><a href="{{ url_for('book.add_book_author') }}">Add A New Author/Audiobook</a></li>
           <li class="list-group-item list-group-item-light"><form method="POST" action="">
             {{ form.search }}
-            <a href="{{ url_for('search.search_res') }}"></a>
+            <a href="{{ url_for('index.search_res') }}"></a>
           </form></li>
         </ul>
       </p>
