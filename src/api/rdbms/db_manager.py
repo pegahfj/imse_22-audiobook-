@@ -106,6 +106,25 @@ class MyDB:
     self.connection.commit()
 
 
+
+  # add a book to the collection of user
+  def addTo_userCollection(self, user_id:int, book_id:int):
+    find = """
+    SELECT * FROM Users WHERE email = %s;"""
+    self.cursor.execute(find, (email,))
+    user = self.cursor.fetchone()
+
+  # get the collection of user
+  def get_userCollection(self, user_id:int):
+    find = """
+    SELECT * FROM Users WHERE email = %s;"""
+    self.cursor.execute(find, (email,))
+    user = self.cursor.fetchone()
+    if user != None:
+        return list(user)
+    else:
+        return None
+
 # -----------------------------------------AUTHOR-----------------------------------------#
 
   def get_all_authors(self):

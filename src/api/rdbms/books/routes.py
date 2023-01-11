@@ -4,7 +4,7 @@ from src import db, bcrypt
 
 from flask import Blueprint, url_for, render_template, flash, redirect, request, session, make_response
 from functools import wraps
-from flask_login import current_user, login_required
+# from flask_login import current_user, login_required
 
 book = Blueprint('book', __name__)
 

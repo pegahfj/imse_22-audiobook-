@@ -11,9 +11,9 @@
 </head>
 
 {% if title %}
-<title>Flask Blog - {{ title }}</title>
+<title>AUDIOBOOKER - {{ title }}</title>
 {% else %}
-<title>Flask Blog</title>
+<title>AUDIOBOOKER</title>
 {% endif %}
 
 <body>
@@ -24,8 +24,8 @@
         </ul>
         <ul>
           {% if session.logged_in %}
-          <li><a  href="../logout">{{session['username'] }}</a></li>
-          <li><a class="logout" href="{{ url_for('users.login') }}">Logout</a></li>
+          <li><a  href=".. /logout">{{session['username'] }}</a></li>
+          <li><a class="logout" href="{{ url_for('users.logout') }}">Logout</a></li>
           {% else %}
           <li><a class="login" href="{{ url_for('users.login') }}">Login</a></li>
           <li><a class="login" href="{{ url_for('users.register') }}">Register</a></li>

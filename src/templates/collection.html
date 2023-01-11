@@ -1,9 +1,9 @@
-{% extends "base.html" %} 
+w{% extends "base.html" %} 
 {% block content %}
 <div class="col-md-8">
   <div class="headings "><h3>Our Sidebar</h3>
   <h1  >Search results:</h1> </div> 
-    {% for book in results %}
+    {% for book in books %}
       <article class="media content-section">
         <div class="media-body">
           <img src={{ url_for('static', filename= book[3]) }} />
@@ -16,7 +16,7 @@
       </article>
       {% endfor %}
 </div>
-<div class="col-md-4">
+<!-- <div class="col-md-4">
   <div class="content-section">
     <div class="headings "> <h3>Our Sidebar</h3></div>
     <p class='text-muted'>You can put any information here you'd like.
@@ -30,5 +30,5 @@
       </ul>
     </p>
   </div>
-</div>
+</div> -->
 {% endblock %}

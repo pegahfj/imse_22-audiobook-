@@ -6,7 +6,7 @@ from flask.cli import FlaskGroup
 
 app = create_app()  
 cli = FlaskGroup(create_app=create_app)  
-
+app.app_context().push()
 
 @cli.command('initdb')
 def initdb():

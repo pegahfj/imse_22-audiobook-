@@ -4,7 +4,7 @@ from src import db
 
 from flask import Blueprint, url_for, render_template, flash, redirect
 from functools import wraps
-from flask_login import current_user, login_required
+# from flask_login import current_user, login_required
 
 index = Blueprint('index', __name__)
 
