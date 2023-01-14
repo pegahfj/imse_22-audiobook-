@@ -3,23 +3,20 @@ import os
 from flask import Flask
 from flask_bcrypt import Bcrypt
 import psycopg2
-from flask_login import LoginManager
 
 
-from .api.rdbms.db_manager import MyDB
+from .api.rdbms.database_manager import DatabaseManager
 
 
 
 # db
 connection = psycopg2.connect(user="postgres", password="postgres", host="api-db", port="5432", dbname="postgres_db")
-db = MyDB(connection)
+db = DatabaseManager(connection)
+
+bcrypt = Bcrypt()
+
 
 # instantiate the app
-bcrypt = Bcrypt()
-# login_manager = LoginManager()
-# login_manager.login_view = "login"
-# login_manager.login_message_category = "info"
-
 def create_app(script_info=None):
 
     app = Flask(__name__, template_folder='templates')

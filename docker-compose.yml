@@ -27,6 +27,7 @@ services:
       - APP_SETTINGS=src.config.BaseConfig
       - DATABASE_URL=postgresql://postgres:postgres@api-db:5432/postgres_db  
       # - DATABASE_TEST_URL=postgresql://postgres:postgres@api-db:5432/api_test  
+    restart: always
     depends_on:
       - api-db
     # Host 
@@ -46,13 +47,5 @@ services:
       - "./src/db/data:/var/lib/postgresql/data/pgdata"
    
 
-  # frontend:
-  #   build: ./view
-  #   container_name: frontend
-  #   restart: always
-  #   expose:
-  #     - 8080
-  #   networks: 
-  #     - external_nw    
  # -----------------------------------------Migration-----------------------------------------#
  

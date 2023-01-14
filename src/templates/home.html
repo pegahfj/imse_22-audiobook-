@@ -5,7 +5,7 @@
   {% for post in posts %}
         <article class="media content-section">
           <div class="media-body">
-            <img src={{ url_for('static', filename= post[5]) }} />
+            <img src={{ url_for('static', filename= post[7]) }} />
             <h4><a class="article-title" href="#">{{ post[2] }}</a></h4>
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ post[4]}}</a>
@@ -24,7 +24,7 @@
       <p class='text-muted'>You can put any information here you'd like.
         <ul class="list-group">
           <li class="list-group-item list-group-item-light"><a href="{{ url_for('book.add_book') }}">Add A New Audiobook</a></li>
-          <li class="list-group-item list-group-item-light"><a href="{{ url_for('book.add_book_author') }}">Add A New Author/Audiobook</a></li>
+          <li class="list-group-item list-group-item-light"><a href="{{ url_for('index.fillingDB') }}">Fill Database</a></li>
           <li class="list-group-item list-group-item-light"><form method="POST" action="">
             {{ form.search }}
             <a href="{{ url_for('index.search_res') }}"></a>
