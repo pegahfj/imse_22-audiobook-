@@ -6,7 +6,7 @@ from functools import wraps
 from .forms import User_register, User_login
 # from .app import db,bcrypt 
 from src import bcrypt
-from .User import User
+from .User import User, UserCollection
 
 
 
@@ -41,6 +41,7 @@ def login():
                 user:User = User.get_byEmail(form.email.data)
                 if bcrypt.check_password_hash(user.password, form.password.data):
                     session['logged_in'] = True
+                    session['user_id'] = user.id
                     session['username'] = user.username
                     flash('You have been logged in!', 'success')
                     return redirect(url_for('index.home'))
@@ -70,15 +71,22 @@ def logout():
     return redirect(url_for('index.home'))
 
 
+################ COLLECTION ###################
+
+@users.route("/user/collection")
+@is_logged_in
+def collection():
+    colct = UserCollection(session['user_id'])
+    books = colct.get_books()
+    return render_template('collection.html', books=books)
+
+@users.route('/collection/<id>/add', methods=['POST'])
+@is_logged_in
+def add_toCollect(id):
+    colct = UserCollection(session['user_id'])  
+    colct.add_book(id)
+    return redirect(url_for('users.collection'))
 
 
-# @users.route("/user/<string:username>")
-# @is_logged_in
-# def collection(username):
-#     user = User.query.filter_by(username=username).first_or_404()
-#     posts = Post.query.filter_by(author=user)\
-#         .order_by(Post.date_posted.desc())\
-#         .paginate(page=page, per_page=5)
-#     return render_template('collection.html', posts=posts, user=user)
 
 

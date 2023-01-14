@@ -1,4 +1,4 @@
-from flask_login import UserMixin
+from flask_restx import Resource, Api
 
 from src import db
 
@@ -10,7 +10,7 @@ class User:
         self.username: str = usr
         self.email: str = email
         self.password: str = psw
-        self.collection = UserCollection(self.id)
+        # self.collection = UserCollection(self.id)
 
     @classmethod
     def get_instance(cls, user:list):
@@ -46,6 +46,9 @@ class User:
             else:
                 return None
 
+    # def get_collection(self, user_id):
+    #      self.collection 
+
 
     # def update_user(self, new_username:str, email:str):
     #     db.update_user(new_username, email)
@@ -57,28 +60,20 @@ class User:
 
 
 class UserCollection:
-    books:list 
     def __init__(self, id):
-        user_id = id
+        self.user_id = id
+        self.books = list() 
         
-    @classmethod     
-    def get(cls, user_id:int):
-        user = db.get_user_byEmail(user_id)
-        if user:
-            return User.get_instance(user)
+    
+    def get_books(self):
+        col = db.get_userCollection(self.user_id)
+        if col:
+            for book in col:
+                self.books.append(list(book))
+            return self.books
         return None
 
-    @classmethod  
-    def get_byEmail(cls, email:str):
-        user = db.get_user_byEmail(email)
-        if user:
-            return User.get_instance(user)
-        return None
-
-    @classmethod
-    def insert(cls, user='test', email='test', passw='test'):
-            o = db.insert_single_user(user, email, passw)
-            if type(o) is int:
-                return o
-            else:
-                return None
+   
+    def add_book(self, book_id):
+            db.addTo_userCollection( self.user_id, book_id)
+            

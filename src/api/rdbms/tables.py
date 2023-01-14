@@ -1,3 +1,54 @@
+class Create():
+    author = """
+    CREATE TABLE AUTHORS (
+        id INTEGER GENERATED ALWAYS AS IDENTITY 
+            (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
+        auth_name VARCHAR(255) NOT NULL,
+        countryOforigins TEXT NOT NULL);"""
+
+    audbook = """
+    CREATE TABLE AUDBOOKS (
+        id INTEGER GENERATED ALWAYS AS IDENTITY 
+            (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
+        author_id INTEGER REFERENCES AUTHORS(id),
+        title TEXT NOT NULL,
+        year INTEGER,
+        lang TEXT NOT NULL,
+        dur INTEGER,
+        images VARCHAR);"""
+
+    user = """
+     CREATE TABLE Users(
+        id INTEGER GENERATED ALWAYS AS IDENTITY 
+            (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        password TEXT CHECK (length(password) <= 500)  NOT NULL
+    ); """
+
+    collection = """
+    CREATE TABLE COLLECTION (
+        id INTEGER GENERATED ALWAYS AS IDENTITY 
+            (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
+        user_id INTEGER REFERENCES USERS(id) UNIQUE
+    );"""
+
+
+    collection_book = """
+    CREATE TABLE COLLECTIONB_BOOK (
+        collection_id INTEGER REFERENCES collection(id),
+        book_id INTEGER REFERENCES AUDBOOKS(id),
+        PRIMARY KEY (collection_id, book_id)   
+    );"""
+
+
+class Drop():
+    author = "DROP TABLE IF EXISTS authors CASCADE"
+    audbook = "DROP TABLE IF EXISTS audbooks CASCADE"
+    user = "DROP TABLE IF EXISTS users CASCADE"
+    user_collection = "DROP TABLE IF EXISTS user_collection CASCADE"
+    collection_book = "DROP TABLE IF EXISTS collection_book CASCADE"
+
 class Author():
     create = """
     CREATE TABLE AUTHORS (
@@ -119,19 +170,29 @@ class Subscription():
     );"""
 
 
+# class Collection():
+#     create = """
+#     CREATE TABLE collection (
+#         id INTEGER GENERATED ALWAYS AS IDENTITY 
+#             (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
+#         user_id INTEGER REFERENCES USERS(id),
+#         book_id INTEGER REFERENCES AUDBOOKS(id)
+#     );"""
+
+# psql -p 5432 -d posgtres_db -U postgres -h localhost
+
 class Collection():
     create = """
-    CREATE TABLE user_collection (
+    CREATE TABLE collection (
         id INTEGER GENERATED ALWAYS AS IDENTITY 
             (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
         user_id INTEGER REFERENCES USERS(id) UNIQUE
     );"""
 
-
-class CollectBook():
+class CollecBooks():
     create = """
     CREATE TABLE collection_book (
-        collection_id INTEGER REFERENCES user_collection(id),
+        collection_id INTEGER REFERENCES collection(id),
         book_id INTEGER REFERENCES AUDBOOKS(id),
-        PRIMARY KEY (collection_id, book_id)   
+        PRIMARY KEY (collection_id)   
     );"""

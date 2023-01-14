@@ -11,6 +11,9 @@
               <a class="mr-2" href="#">{{ post[4]}}</a>
               <small class="text-muted">{{ post[3] }}</small>
             </div>
+            <form method="POST" action="/collection/{{post[0]}}/add">
+              <p><input type="submit" value="Add to collection"></p>
+            </form>
           </div>
         </article>
     {% endfor %}
