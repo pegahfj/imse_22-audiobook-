@@ -12,7 +12,7 @@ class DatabaseManager:
   def init_db(self):
     self.clear_db()
     self.create_tables()
-    # self.insert_bookCsv()
+    self.insert_bookCsv()
 
   def clear_db(self):
     self.cursor.execute(Drop.author)
@@ -54,8 +54,8 @@ class DatabaseManager:
       dur = row['dur'] 
       images = "images/"+row['images'] 
 
-      val2 = (authID, title, year, lang, rating, dur, images)
-      self.cursor.execute(SingleInsert.audbook, val2)
+      val = (authID, title, year, lang, rating, dur, images)
+      self.cursor.execute(SingleInsert.audbook, val)
       self.connection.commit()
      
      

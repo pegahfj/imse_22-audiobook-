@@ -89,7 +89,7 @@ class Read:
     authorName = """
     SELECT * FROM AUTHORS WHERE AUTHORS.auth_name iLIKE %s;
     """
-    audbook = "SELECT * FROM AUDBOOKS"
+    audbook = "SELECT * FROM AUDBOOKS;"
     searchBar = "SELECT * FROM BOOKAUTHOR WHERE (BOOKAUTHOR.title iLIKE %s OR BOOKAUTHOR.auth_name iLIKE %s);"
    
 

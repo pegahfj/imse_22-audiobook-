@@ -9,6 +9,7 @@ from functools import wraps
 index = Blueprint('index', __name__)
 
 
+
 @index.route('/', methods=['GET', 'POST'])
 def home():
     form = SearchForm()
@@ -21,17 +22,28 @@ def home():
         return render_template('home.html', posts=books, form=form)
 
 
+
+
 @index.route('/search', methods=['GET', 'POST'])
 def search_res():
     form = SearchForm()
     search = form.search.data
-    # flash(f'Showing Search Results for {search} ', 'success')
-    book = db.search_books(search)
-    return render_template('search.html', results=book, form=form)
+    if search:
+        book = db.search_books(search)
+        return render_template('search.html', results=book, form=form)
+    else:
+        return render_template('search.html', results=book)
 
 
 @index.route('/fillingDB') 
 def fillingDB(): 
-    db.insert_bookCsv()
+    db.init_db()
     return redirect(url_for('index.home'))
+
+
+@index.route('/clearDB') 
+def clearDB(): 
+    db.clear_db()
+    form = SearchForm()
+    return render_template('home.html', posts=[], form=form)
 
