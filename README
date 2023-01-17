@@ -1,32 +1,83 @@
-# 1. set up environment 
+# RUN WITH FLASK #
+# --------------- #
+# create python environment
+python3.10 -m venv name
+# activate the python environment
+source audb/bin/activate      
 
-# 2. import flask and create a flaks app
-
-# 3. a simple dummy home page : app.rout("/")
-
-# 4. Next, let's configure the Flask CLI tool to run and manage the app from the command line.
-
-# 5. Flask environment variables : 
-#       export FLASK_APP= 
-#       export FLASK_DEBUG=1 -> changes happen automatically
-
-
-# 6. add a new file called config.py to the "src" directory, 
-    # where we'll define environment-specific configuration variables:
-    # class BaseConfig: TESTING = False,
-    # class DevelopmentConfig(BaseConfig): pass , class TestingConfig(BaseConfig): TESTING = True 
-    # this should be set in app.py : app.config.from_object('src.config.DevelopmentConfig')
-    # then :
-    
-    # export FLASK_ENV=development --> enable debug mode 
-
-# 7. FLASK HTML TEMPLATES
+# Flask App #
+# --------- #
+# To enable debug mode
+flask --app hello --debug run
 
 
-# ---------------------------------
-# export FLASK_APP=src/app.py
-# export FLASK_ENV=development
-# python3 cli_manager.py run
+
+# Docker Commands #
+# --------------- #
+# Build the image:
+docker-compose build
+
+
+# containers started in detached mode(-d) exit when the root process used to run the container exits.
+docker-compose up -d
+
+# Update the container and keep it runnning in detached mode
+docker-compose up -d --build 
+
+# According to the documentation, you can ignore data from previous volume with this:
+docker-compose up -d --force-recreate --renew-anon-volumes
+
+# if you deleted the image cach of docker you need to run it first unmounted
+
+# by running this command you can query psql
+docker-compose exec api-db psql -U postgres
+
+#  psql (14.5)
+#  Type "help" for help.
+
+#  postgres=# \c api_dev
+#  You are now connected to database "api_dev" as user "postgres".
+#  api_dev=# \dt
+#           List of relations
+#   Schema | Name  | Type  |  Owner   
+#  --------+-------+-------+----------
+#   public | users | table | postgres
+#  (1 row)
+#  api_dev=# \q
+
+
+
+# Pytest Commands #
+# --------------- #
+
+# normal run
+docker-compose exec api python -m pytest "src/tests"
+
+# disable warnings
+docker-compose exec api python -m pytest "src/tests" -p no:warnings
+
+# run only the last failed tests
+docker-compose exec api python -m pytest "src/tests" --lf
+
+# run only the tests with names that match the string expression
+docker-compose exec api python -m pytest "src/tests" -k "config and not test_development_config"
+
+# stop the test session after the first failure
+docker-compose exec api python -m pytest "src/tests" -x
+
+# enter PDB after first failure then end the test session
+docker-compose exec api python -m pytest "src/tests" -x --pdb
+
+# stop the test run after two failures
+docker-compose exec api python -m pytest "src/tests" --maxfail=2
+
+# show local variables in tracebacks
+docker-compose exec api python -m pytest "src/tests" -l
+
+# list the 2 slowest tests
+docker-compose exec api python -m pytest "src/tests" --durations=2
+
+python3 manage.py initdb
 
 
 # docker cp /Users/pegah/Desktop/IMSE/submissions-22/M2/app/Docs/authors.csv 16f7351d971e:/var/lib/postgresql/data
@@ -38,5 +89,3 @@
 
 
 
-
-# if you deleted the image cach of docker you need to run it first unmounted
