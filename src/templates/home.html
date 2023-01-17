@@ -23,8 +23,8 @@
       <div class="headings "> <h3>Our Sidebar</h3></div>  
       <p class='text-muted'>You can put any information here you'd like.
         <ul class="list-group">
-          <li class="list-group-item list-group-item-light"><a href="{{ url_for('index.clearDB') }}">Clear Database</a></li>
           <li class="list-group-item list-group-item-light"><a href="{{ url_for('index.fillingDB') }}">Fill Database</a></li>
+          <li class="list-group-item list-group-item-light"><a href="{{ url_for('index.create_report') }}">create Report</a></li>
           <li class="list-group-item list-group-item-light"><form method="POST" action="">
             {{ form.search }}
             <a href="{{ url_for('index.search_res') }}"></a>

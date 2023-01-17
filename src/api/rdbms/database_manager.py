@@ -12,14 +12,13 @@ class DatabaseManager:
   def init_db(self):
     self.clear_db()
     self.create_tables()
-    self.insert_bookCsv()
+    
 
   def clear_db(self):
-    self.cursor.execute(Drop.author)
-    self.cursor.execute(Drop.audbook)
     self.cursor.execute(Drop.user)
     self.cursor.execute(Drop.collection)
-    # self.cursor.execute(Drop.collection_book)
+    self.cursor.execute(Drop.author)
+    self.cursor.execute(Drop.audbook)
 
     self.connection.commit()
 
@@ -27,14 +26,23 @@ class DatabaseManager:
     self.cursor.execute(Create.author)
     self.cursor.execute(Create.audbook)
     self.cursor.execute(Create.user)
-    self.cursor.execute(Create.collection)
-    # self.cursor.execute(Create.collection_book)
-    
+    self.cursor.execute(Create.collection) 
     self.connection.commit()
 
+  def fill_db(self):
+    self.insert_bookCsv()
+  
+  
+  def create_report(self):
+    self.cursor.execute(Drop.bestseller)
+    self.cursor.execute(Create.bestseller)
+    self.connection.commit()
 
+  def get_report(self):
+    self.cursor.execute(Read.report)
+    self.connection.commit()
+    return self.cursor.fetchall()
 
-     
   def insert_bookCsv(self):
     
 # author_id, title, year, lang,images
@@ -163,8 +171,16 @@ class DatabaseManager:
 
 # -----------------------------------------GENERAL-----------------------------------------#
 
+
   def search_books(self, name:str):
     val  = ('%' + name + '%', '%' + name + '%')
     self.cursor.execute(Read.searchBar , val)
     book = self.cursor.fetchall()
     return book
+  
+  def make_report(self, name:str):
+    val  = ('%' + name + '%', '%' + name + '%')
+    self.cursor.execute(Read.searchBar , val)
+    book = self.cursor.fetchall()
+    return book
+    

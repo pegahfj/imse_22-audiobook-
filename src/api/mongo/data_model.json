@@ -1,0 +1,16 @@
+{  
+    "audiobooks": {  
+        "id": "number",
+        "title": "string",   
+        "year": "number",  
+        "language": "string",
+        "rating": "string",
+        "duration": "string",
+        "image":   "string",
+        "author": {
+            "id": "number",
+            "name": "string", 
+            "country": "string"
+        }
+    }  
+}  

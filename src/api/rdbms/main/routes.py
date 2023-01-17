@@ -37,13 +37,13 @@ def search_res():
 
 @index.route('/fillingDB') 
 def fillingDB(): 
-    db.init_db()
+    db.fill_db()
     return redirect(url_for('index.home'))
 
 
-@index.route('/clearDB') 
-def clearDB(): 
-    db.clear_db()
-    form = SearchForm()
-    return render_template('home.html', posts=[], form=form)
+@index.route('/report') 
+def create_report(): 
+    db.create_report()
+    posts = db.get_report()
+    return render_template('report.html', posts=posts)
 

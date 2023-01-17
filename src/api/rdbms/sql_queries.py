@@ -32,9 +32,17 @@ class Create:
         id INTEGER GENERATED ALWAYS AS IDENTITY 
             (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
         book_id INTEGER REFERENCES AUDBOOKS(id),
-        user_id INTEGER REFERENCES USERS(id) UNIQUE
+        user_id INTEGER REFERENCES USERS(id) 
     );"""
-
+    
+    bestseller =  """
+    CREATE TABLE BestSeller AS 
+    SELECT AUTHORS.id,  AUTHORS.auth_name, COUNT(AUDBOOKS.id)
+    FROM COLLECTION
+    JOIN AUDBOOKS ON COLLECTION.book_id = AUDBOOKS.id 
+    JOIN AUTHORS ON AUDBOOKS.author_id = AUTHORS.id
+    GROUP BY AUTHORS.id
+    ORDER BY COUNT(AUDBOOKS.id) DESC;"""
 
     # collection_book = """
     # CREATE TABLE COLLECTIONB_BOOK (
@@ -49,7 +57,7 @@ class Drop:
     audbook = "DROP TABLE IF EXISTS audbooks CASCADE;"
     user = "DROP TABLE IF EXISTS users CASCADE;"
     collection = "DROP TABLE IF EXISTS COLLECTION CASCADE;"
-    collection_book = "DROP TABLE IF EXISTS COLLECTIONB_BOOK CASCADE;"
+    bestseller = "DROP TABLE IF EXISTS bestseller CASCADE;"
 
 
 
@@ -60,11 +68,7 @@ class Join:
     FROM AUDBOOKS
     LEFT JOIN AUTHORS USING (id);"""
     
-    collection_book =  """
-    CREATE TABLE collection AS 
-    SELECT user_collection.id, user_collection.user_id, collection_book.book_id
-    FROM user_collection
-    INNER JOIN collection_book ON id = collection_id;"""
+    
 
 
 
@@ -77,6 +81,9 @@ class SingleInsert:
     VALUES (%s, %s, %s, %s, %s, %s, %s);"""
     user = """
     INSERT INTO Users (username, email, password)
+    VALUES (%s, %s, %s)  RETURNING id;"""
+    collection = """
+    INSERT INTO COLLECTION (book_id, user_id)
     VALUES (%s, %s, %s)  RETURNING id;"""
 
 
@@ -92,6 +99,20 @@ class Read:
     """
     audbook = "SELECT * FROM AUDBOOKS;"
     searchBar = "SELECT * FROM BOOKAUTHOR WHERE (BOOKAUTHOR.title iLIKE %s OR BOOKAUTHOR.auth_name iLIKE %s);"
+    report = "SELECT * FROM BestSeller;"
+#     report2 = """
+#     CREATE TABLE BestSeller AS 
+#     SELECT auth_name, AUTHORS.book_id
+#     SELECT DISTINCT ON (b.id), b.*, SUM(oi.quantity) as total_quantity
+#     FROM order_items oi JOIN
+#         orders o
+#         ON oi.order_id = o.id JOIN
+#         books b
+#         ON oi.book_id = b.id
+#     WHERE o.status in (2, 3)
+#     GROUP BY b.id
+#     ORDER BY b.category_id, total_quantity DESC
+# """
    
 
 
