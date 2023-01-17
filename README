@@ -30,3 +30,13 @@
 
 
 # docker cp /Users/pegah/Desktop/IMSE/submissions-22/M2/app/Docs/authors.csv 16f7351d971e:/var/lib/postgresql/data
+
+
+
+
+
+
+
+
+
+# if you deleted the image cach of docker you need to run it first unmounted
