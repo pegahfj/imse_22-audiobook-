@@ -98,6 +98,26 @@ class DatabaseManager:
         print(msg) 
 
 
+  def addTo_userCollection(self, user_id:int, book_id:int):
+      insert = """
+        INSERT INTO collection ( user_id, book_id)
+        VALUES (%s, %s)  RETURNING id"""
+
+      val = (user_id, book_id)
+      self.cursor.execute(insert, val)
+      self.connection.commit()
+
+
+    # get the collection of user
+  def get_userCollection(self, user_id:int):
+      find = """
+      SELECT * FROM AUDBOOKS
+      WHERE id IN (SELECT book_id 
+      FROM collection WHERE user_id = %s);"""
+
+      self.cursor.execute(find, (user_id,))
+      return list(self.cursor.fetchall())
+
         # -----------------------------------------AUTHOR-----------------------------------------#
 
   def get_all_authors(self):
