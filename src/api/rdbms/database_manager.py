@@ -19,7 +19,7 @@ class DatabaseManager:
     self.cursor.execute(Drop.audbook)
     self.cursor.execute(Drop.user)
     self.cursor.execute(Drop.collection)
-    self.cursor.execute(Drop.collection_book)
+    # self.cursor.execute(Drop.collection_book)
 
     self.connection.commit()
 
@@ -28,7 +28,7 @@ class DatabaseManager:
     self.cursor.execute(Create.audbook)
     self.cursor.execute(Create.user)
     self.cursor.execute(Create.collection)
-    self.cursor.execute(Create.collection_book)
+    # self.cursor.execute(Create.collection_book)
     
     self.connection.commit()
 

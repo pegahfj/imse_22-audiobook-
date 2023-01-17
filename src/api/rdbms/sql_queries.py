@@ -31,16 +31,17 @@ class Create:
     CREATE TABLE COLLECTION (
         id INTEGER GENERATED ALWAYS AS IDENTITY 
             (START WITH 10 INCREMENT BY 10) PRIMARY KEY,
+        book_id INTEGER REFERENCES AUDBOOKS(id),
         user_id INTEGER REFERENCES USERS(id) UNIQUE
     );"""
 
 
-    collection_book = """
-    CREATE TABLE COLLECTIONB_BOOK (
-        collection_id INTEGER REFERENCES collection(id),
-        book_id INTEGER REFERENCES AUDBOOKS(id),
-        PRIMARY KEY (collection_id, book_id)   
-    );"""
+    # collection_book = """
+    # CREATE TABLE COLLECTIONB_BOOK (
+    #     collection_id INTEGER REFERENCES collection(id),
+    #     book_id INTEGER REFERENCES AUDBOOKS(id),
+    #     PRIMARY KEY (collection_id, book_id)   
+    # );"""
 
 
 class Drop:
