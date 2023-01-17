@@ -1,6 +1,7 @@
 import pandas as pd
 import random
 
+from .models import User
 from .sql_queries import Create, Drop, SingleInsert, Read
 
 class DatabaseManager:
@@ -81,18 +82,24 @@ class DatabaseManager:
         return list(user)
     else:
         return None
+  
+  def get_all_users(self):
+    self.cursor.execute(Read.users)
+    users = self.cursor.fetchall()
+    return users
 
 
 
-  def insert_single_user(self, username:str, email:str, password:str):  
-    if self.get_user_byEmail(email) != None:
+  # def insert_single_user(self, username:str, email:str, password:str):  
+  def insert_single_user(self, user:User):  
+    if self.get_user_byEmail(user.email) != None:
         msg = 'E-Mail already exist'
     try:    
-        var = (username, email, password)
+        var = (user.username, user.email, user.password)
         self.cursor.execute(SingleInsert.user, var)
         self.connection.commit()
         id_of_new_row = self.cursor.fetchone()[0]
-        return int(id_of_new_row)
+        user.set_id(id_of_new_row)
     except:
         print(msg) 
 

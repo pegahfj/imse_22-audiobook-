@@ -6,7 +6,7 @@ from functools import wraps
 from .forms import User_register, User_login
 # from .app import db,bcrypt 
 from src import bcrypt
-from .user_model import User, UserCollection
+from .User import User, UserCollection
 
 
 

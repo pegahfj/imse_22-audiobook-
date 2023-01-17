@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 import psycopg2
 
 
-from .api.rdbms.database_manager import DatabaseManager
+from .api.database_manager import DatabaseManager
 
 
 
@@ -30,6 +30,9 @@ def create_app(script_info=None):
 
 
     # register blueprints
+    from src.api.users import users_blueprint
+    app.register_blueprint(users_blueprint)
+    
     from .api.rdbms.main.routes import index
     app.register_blueprint(index)
 
