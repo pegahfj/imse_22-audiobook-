@@ -1,19 +1,24 @@
 from flask import Blueprint, url_for, render_template, flash, redirect, request, session, make_response
 from functools import wraps
-# from flask_login import login_user, current_user, logout_user, login_required
 from flask_restx import Resource, Api, fields 
 
-
 from .forms import User_register, User_login
-# from .app import db,bcrypt 
-from src import bcrypt
 from .User import User, UserCollection
+from src import db, bcrypt
+from .models import User
 
-
-
-users = Blueprint('users', __name__)
+users = Blueprint('users', __name__, url_prefix="/user")
 
 api = Api(users)
+
+
+# new
+user = api.model('User', {
+    'id': fields.Integer(readOnly=True),
+    'username': fields.String(required=True),
+    'email': fields.String(required=True),
+    'password': fields.String(required=True),
+})
 
 
 

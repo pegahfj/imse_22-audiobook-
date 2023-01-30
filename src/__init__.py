@@ -30,14 +30,14 @@ def create_app(script_info=None):
 
 
     # register blueprints
-    from src.api.users import users_blueprint
-    app.register_blueprint(users_blueprint)
+    from src.api.users import users
+    app.register_blueprint(users)
     
     from .api.rdbms.main.routes import index
     app.register_blueprint(index)
 
-    from .api.rdbms.users.routes import users
-    app.register_blueprint(users)
+    # from .api.rdbms.users.routes import users
+    # app.register_blueprint(users)
     
     from .api.rdbms.books.routes import book
     app.register_blueprint(book)
