@@ -1,0 +1,38 @@
+{  
+    "audiobooks": {  
+        "title": "string",   
+        "year": "number",  
+        "language": "string",
+        "rating": "string",
+        "duration": "string",
+        "image":   "string",
+        "author": {
+            "id": "number",
+            "name": "string", 
+            "country": "string"
+        }
+    }  
+}
+// db.createCollection(
+//     "audiobooks", 
+//     {validator:{$jsonSchema:{
+//         "description": "",
+//         "type": "object",
+//         "properties": {
+//             "title": {"type": "string"},  
+//             "year": {"type": "number"},  
+//             "language":  {"type": "string"},
+//             "rating": {"type": "string"},
+//             "duration": {"type": "string"},
+//             "image":   {"type": "string"},
+//             "author": {
+//                 "type": "object",
+//                 "description": "",
+//                 "properties": {
+//                     "name": {"type": "string"},
+//                     "country":{"type": "string"}
+//                 }
+//             }  
+//         },
+//         "required": [ "title", "language" ],
+//   }}})

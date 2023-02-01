@@ -1,0 +1,101 @@
+title;auth_name;year;lang;rating;dur;images
+Things Fall Apart;Chinua Achebe;1958;English;4;2160;things-fall-apart.jpg
+Fairy tales;Hans Christian Andersen;1836;Danish;3;2160;fairy-tales.jpg
+The Divine Comedy;Dante Alighieri;1315;Italian;4;1620;the-divine-comedy.jpg
+The Epic Of Gilgamesh;Unknown;-1700;Akkadian;4;2160;the-epic-of-gilgamesh.jpg
+The Book Of Job;Unknown;-600;Hebrew;5;1188;the-book-of-job.jpg
+One Thousand and One Nights;Unknown;1200;Arabic;3;2160;one-thousand-and-one-nights.jpg
+Njál's Saga;Unknown;1350;Old Norse;3;1620;njals-saga.jpg
+Pride and Prejudice;Jane Austen;1813;English;3;2160;pride-and-prejudice.jpg
+Le Père Goriot;Honoré de Balzac;1835;French;3;1620;le-pere-goriot.jpg
+Molloy, Malone Dies, The Unnamable, the trilogy;Samuel Beckett;1952;French, English;4;2160;molloy-malone-dies-the-unnamable.jpg
+The Decameron;Giovanni Boccaccio;1351;Italian;3;1188;the-decameron.jpg
+Ficciones;Jorge Luis Borges;1965;Spanish;3;1620;ficciones.jpg
+Wuthering Heights;Emily Brontë;1847;English;3;1620;wuthering-heights.jpg
+The Stranger;Albert Camus;1942;French;4;2160;l-etranger.jpg
+Poems;Paul Celan;1952;German;3;1080;poems-paul-celan.jpg
+Journey to the End of the Night;Louis-Ferdinand Céline;1932;French;3;1188;voyage-au-bout-de-la-nuit.jpg
+Don Quijote De La Mancha;Miguel de Cervantes;1610;Spanish;4;1620;don-quijote-de-la-mancha.jpg
+The Canterbury Tales;Geoffrey Chaucer;1450;English;2;1188;the-canterbury-tales.jpg
+Stories;Anton Chekhov;1886;Russian;3;2160;stories-of-anton-chekhov.jpg
+Nostromo;Joseph Conrad;1904;English;3;2160;nostromo.jpg
+Great Expectations;Charles Dickens;1861;English;3;2160;great-expectations.jpg
+Jacques the Fatalist;Denis Diderot;1796;French;3;1620;jacques-the-fatalist.jpg
+Berlin Alexanderplatz;Alfred Döblin;1929;German;4;2160;berlin-alexanderplatz.jpg
+Crime and Punishment;Fyodor Dostoevsky;1866;Russian;4;2268;crime-and-punishment.jpg
+The Idiot;Fyodor Dostoevsky;1869;Russian;3;2160;the-idiot.jpg
+The Possessed;Fyodor Dostoevsky;1872;Russian;4;1620;the-possessed.jpg
+The Brothers Karamazov;Fyodor Dostoevsky;1880;Russian;3;1188;the-brothers-karamazov.jpg
+Middlemarch;George Eliot;1871;English;4;1188;middlemarch.jpg
+Invisible Man;Ralph Ellison;1952;English;4;3780;invisible-man.jpg
+Medea;Euripides;-431;Greek;3;1620;medea.jpg
+Absalom, Absalom!;William Faulkner;1936;English;4;2160;absalom-absalom.jpg
+The Sound and the Fury;William Faulkner;1929;English;0;2160;the-sound-and-the-fury.jpg
+Madame Bovary;Gustave Flaubert;1857;French;3;2160;madame-bovary.jpg
+Sentimental Education;Gustave Flaubert;1869;French;3;2160;l-education-sentimentale.jpg
+Gypsy Ballads;Federico García Lorca;1928;Spanish;3;2160;gypsy-ballads.jpg
+One Hundred Years of Solitude;Gabriel García Márquez;1967;Spanish;4;1620;one-hundred-years-of-solitude.jpg
+Love in the Time of Cholera;Gabriel García Márquez;1985;Spanish;3;2160;love-in-the-time-of-cholera.jpg
+Faust;Johann Wolfgang von Goethe;1832;German;4;3996;faust.jpg
+Dead Souls;Nikolai Gogol;1842;Russian;3;324;dead-souls.jpg
+The Tin Drum;Günter Grass;1959;German;3;1188;the-tin-drum.jpg
+The Devil to Pay in the Backlands;João Guimarães Rosa;1956;Portuguese;3;2160;the-devil-to-pay-in-the-backlands.jpg
+Hunger;Knut Hamsun;1890;Norwegian;3;2160;hunger.jpg
+The Old Man and the Sea;Ernest Hemingway;1952;English;4;1188;the-old-man-and-the-sea.jpg
+Iliad;Homer;-735;Greek;3;2160;the-iliad-of-homer.jpg
+Odyssey;Homer;-800;Greek;3;2160;the-odyssey-of-homer.jpg
+A Doll's House;Henrik Ibsen;1879;Norwegian;3;2160;a-Dolls-house.jpg
+Ulysses;James Joyce;1922;English;3;1620;ulysses.jpg
+Stories;Franz Kafka;1924;German;3;2160;stories-of-franz-kafka.jpg
+The Trial;Franz Kafka;1925;German;3;1620;the-trial.jpg
+The Castle;Franz Kafka;1926;German;3;2160;the-castle.jpg
+The recognition of Shakuntala;Kālidāsa;150;Sanskrit;3;648;the-recognition-of-shakuntala.jpg
+The Sound of the Mountain;Yasunari Kawabata;1954;Japanese;3;1188;the-sound-of-the-mountain.jpg
+Zorba the Greek;Nikos Kazantzakis;1946;Greek;4;1188;zorba-the-greek.jpg
+Sons and Lovers;D. H. Lawrence;1913;English;2;1188;sons-and-lovers.jpg
+Independent People;Halldór Laxness;1934;Icelandic;3;324;independent-people.jpg
+Poems;Giacomo Leopardi;1818;Italian;4;1620;poems-giacomo-leopardi.jpg
+The Golden Notebook;Doris Lessing;1962;English;4;2160;the-golden-notebook.jpg
+Pippi Longstocking;Astrid Lindgren;1945;Swedish;4;2160;pippi-longstocking.jpg
+Diary of a Madman;Lu Xun;1918;Chinese;4;1620;diary-of-a-madman.jpg
+Children of Gebelawi;Naguib Mahfouz;1959;Arabic;4;1188;children-of-gebelawi.jpg
+Buddenbrooks;Thomas Mann;1901;German;4;1620;buddenbrooks.jpg
+The Magic Mountain;Thomas Mann;1924;German;4;1620;the-magic-mountain.jpg
+Moby Dick;Herman Melville;1851;English;3;2700;moby-dick.jpg
+Essays;Michel de Montaigne;1595;French;3;1188;essais.jpg
+History;Elsa Morante;1974;Italian;3;2160;history.jpg
+Beloved;Toni Morrison;1987;English;3;1188;beloved.jpg
+The Tale of Genji;Murasaki Shikibu;1006;Japanese;3;2160;the-tale-of-genji.jpg
+The Man Without Qualities;Robert Musil;1931;German;3;1620;the-man-without-qualities.jpg
+Lolita;Vladimir Nabokov;1955;English;4;2160;lolita.jpg
+Nineteen Eighty-Four;George Orwell;1949;English;4;324;nineteen-eighty-four.jpg
+Metamorphoses;Ovid;100;Classical Latin;2;1620;the-metamorphoses-of-ovid.jpg
+The Book of Disquiet;Fernando Pessoa;1928;Portuguese;3;1620;the-book-of-disquiet.jpg
+Tales;Edgar Allan Poe;1950;English;3;1620;tales-and-poems-of-edgar-allan-poe.jpg
+In Search of Lost Time;Marcel Proust;1920;French;3;648;a-la-recherche-du-temps-perdu.jpg
+Gargantua and Pantagruel;François Rabelais;1533;French;3;1080;gargantua-and-pantagruel.jpg
+Pedro Páramo;Juan Rulfo;1955;Spanish;3;1620;pedro-paramo.jpg
+The Masnavi;Rumi;1236;Persian;4;2160;the-masnavi.jpg
+Midnight's Children;Salman Rushdie;1981;English;3;1188;midnights-children.jpg
+Bostan;Saadi;1257;Persian;3;1188;bostan.jpg
+Season of Migration to the North;Tayeb Salih;1966;Arabic;3;2160;season-of-migration-to-the-north.jpg
+Blindness;José Saramago;1995;Portuguese;4;1188;blindness.jpg
+Hamlet;William Shakespeare;1603;English;4;1620;hamlet.jpg
+King Lear;William Shakespeare;1608;English;4;1620;king-lear.jpg
+Othello;William Shakespeare;1609;English;3;1188;othello.jpg
+Oedipus the King;Sophocles;-430;Greek;3;1188;oedipus-the-king.jpg
+The Red and the Black;Stendhal;1830;French;3;1620;le-rouge-et-le-noir.jpg
+The Life And Opinions of Tristram Shandy;Laurence Sterne;1760;English;4;1188;the-life-and-opinions-of-tristram-shandy.jpg
+Confessions of Zeno;Italo Svevo;1923;Italian;3;1188;confessions-of-zeno.jpg
+Gulliver's Travels;Jonathan Swift;1726;English;3;1188;gullivers-travels.jpg
+War and Peace;Leo Tolstoy;1867;Russian;4;2160;war-and-peace.jpg
+Anna Karenina;Leo Tolstoy;1877;Russian;4;2160;anna-karenina.jpg
+The Death of Ivan Ilyich;Leo Tolstoy;1886;Russian;3;1188;the-death-of-ivan-ilyich.jpg
+The Adventures of Huckleberry Finn;Mark Twain;1884;English;3;1188;the-adventures-of-huckleberry-finn.jpg
+Ramayana;Valmiki;-450;Sanskrit;3;1620;ramayana.jpg
+The Aeneid;Virgil;-23;Classical Latin;4;2160;the-aeneid.jpg
+Mahabharata;Vyasa;-700;Sanskrit;3;2160;the-mahab-harata.jpg
+Leaves of Grass;Walt Whitman;1855;English;3;2160;leaves-of-grass.jpg
+Mrs Dalloway;Virginia Woolf;1925;English;4;2160;mrs-dalloway.jpg
+To the Lighthouse;Virginia Woolf;1927;English;3;1188;to-the-lighthouse.jpg
+Memoirs of Hadrian;Marguerite Yourcenar;1951;French;3;1620;memoirs-of-hadrian.jpg
